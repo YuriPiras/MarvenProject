@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/api" name="Api1" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/categories/{category}/reserve">
+        <inSequence>
+            <property expression="json-eval($.hospital)" name="Hospital" scope="default" type="STRING"/>
+            <call>
+                <endpoint key="TestEP"/>
+            </call>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <sequence key="Fault"/>
+        </faultSequence>
+    </resource>
+</api>
